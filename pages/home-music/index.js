@@ -132,7 +132,7 @@ Page({
 	},
 	navigateToDetailSongs(rankingName){
 		wx.navigateTo({
-			url: `/pages/detail-songs/detailSongs?ranking=${rankingName}`,
+			url: `/pages/detail-songs/detailSongs?ranking=${rankingName}&type=rank`,
 		})
 	},
 

@@ -1,0 +1,10 @@
+<!--components/search-items/search-items.wxml-->
+<view class="search-items" wx:if="{{!searchValue || suggestSongs.length === 0 && resultSongs.length === 0}}">
+	<area-header title="{{title}}" showRight="{{false}}" fontWeight="400"></area-header>
+	<view class="keywords">
+		<block wx:for="{{items}}" wx:key="first">
+			<view wx:if="{{item.first}}" class="tag" bindtap="getPageSearchResult" data-keyword="{{item.first}}" style="{{style}}">{{item.first}}</view>
+			<view class="tag" bindtap="getPageSearchResult" wx:elif="{{item}}" data-keyword="{{item}}" style="{{style}}">{{item}}</view>
+		</block>
+	</view>
+</view>

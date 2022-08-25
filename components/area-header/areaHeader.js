@@ -15,6 +15,10 @@ Component({
     showRight: {
       type: Boolean,
       value: true
+    },
+    fontWeight:{
+      type: String,
+      value: '700'
     }
   },
 

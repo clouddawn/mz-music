@@ -22,6 +22,20 @@
 					"query": "id=14548921",
 					"launchMode": "default",
 					"scene": null
+				},
+				{
+					"name": "热歌榜",
+					"pathName": "pages/detail-songs/detailSongs",
+					"query": "ranking=hotRanking",
+					"launchMode": "default",
+					"scene": null
+				},
+				{
+					"name": "detail-search",
+					"pathName": "pages/detail-search/detailSearch",
+					"query": "",
+					"launchMode": "default",
+					"scene": null
 				}
 			]
 		}

@@ -1,0 +1,23 @@
+/* components/search-items/search-items.wxss */
+
+.search-items {
+	padding: 10rpx;
+}
+
+.search-items .keywords {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.search-items .keywords .tag {
+	font-size: 26rpx;
+	background-color: white;
+	padding: 10rpx 12rpx;
+	border-radius: 16rpx;
+	margin-right: 15rpx;
+	margin-top: 15rpx;
+}
+
+.search-items .keywords .tag:first-of-type {
+	color: #26ce8a;
+}

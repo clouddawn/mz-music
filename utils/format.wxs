@@ -10,7 +10,7 @@ function formatCount(count) {
 }
 
 function padLeftZero(time) {
-  time = time + '';
+	time = time + '';
 	return ("00" + time).slice(time.length);
 }
 
@@ -21,16 +21,25 @@ function formatDuration(duration) {
 	return minute + ':' + padLeftZero(second);
 }
 
-function formatAuthors(authors){
+function formatAuthors(authors) {
 	var authorsArr = [];
-	authors && authors.forEach(function(item){
+	authors && authors.forEach(function (item) {
 		authorsArr.push(item.name);
 	})
 	return authorsArr.join('/');
 }
 
+function formatAlName(name) {
+	if (name) {
+		return " - " + name;
+	} else {
+		return ""
+	}
+}
+
 module.exports = {
 	formatCount: formatCount,
 	formatDuration: formatDuration,
-	formatAuthors:formatAuthors
+	formatAuthors: formatAuthors,
+	formatAlName: formatAlName
 }

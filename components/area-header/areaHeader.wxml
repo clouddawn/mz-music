@@ -1,7 +1,7 @@
 <!--components/area-header/areaHeader.wxml-->
 
 <view class="header">
-	<view class="title">{{title}}</view>
+	<view class="title" style="font-weight: {{fontWeight}};">{{title}}</view>
 	<view class="right" wx:if="{{showRight}}" bindtap="handleMoreTap">
 		<view class="slot">
 			<slot></slot>

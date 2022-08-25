@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "./utils/tools.wxss";
 page {
 	background-color: #fafafa;
 	box-sizing: border-box;
@@ -12,3 +13,11 @@ page {
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.van-search {
+	padding: 10px 0 !important;
+}
+.van-search__content {
+	background-color: white !important;
+}
+

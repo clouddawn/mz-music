@@ -10,11 +10,11 @@
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fafafa",
 		"navigationBarTitleText": "Weixin",
-		"navigationBarTextStyle": "black"
+		"navigationBarTextStyle": "black",
+		"onReachBottomDistance": 300
 	},
 	"tabBar": {
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/home-music/index",
 				"text": "音乐",
 				"iconPath": "assets/images/tabbar/music_normal.png",

@@ -1,0 +1,12 @@
+<!--components/song-item-v2/songItemV2.wxml-->
+<wxs src="/utils/format.wxs" module="format"></wxs>
+<view class="item">
+	<view class="index">{{index + 1}}</view>
+	<view class="info">
+		<view class="name limitTwoLine">{{itemInfo.name}}</view>
+		<view class="source">
+			<image wx:if="{{itemInfo.sq}}" class="icon" src="/assets/images/icons/sq_icon.png"></image>
+			<text class="author">{{format.formatAuthors(itemInfo.ar)}}{{format.formatAlName(itemInfo.al.name)}}</text>
+		</view>
+	</view>
+</view>

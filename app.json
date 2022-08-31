@@ -4,7 +4,8 @@
 		"pages/home-video/index",
 		"pages/detail-video/detailVideo",
 		"pages/detail-search/detailSearch",
-		"pages/detail-songs/detailSongs"
+		"pages/detail-songs/detailSongs",
+		"pages/music-player/music-player"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
@@ -14,7 +15,8 @@
 		"onReachBottomDistance": 300
 	},
 	"tabBar": {
-		"list": [{
+		"list": [
+			{
 				"pagePath": "pages/home-music/index",
 				"text": "音乐",
 				"iconPath": "assets/images/tabbar/music_normal.png",

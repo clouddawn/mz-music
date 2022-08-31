@@ -28,6 +28,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+		goMusicPlayer(event){
+			// const id = event.currentTarget.dataset.id;
+			const id = this.properties.itemInfo.id;
+			wx.navigateTo({
+				url: `/pages/music-player/music-player?id=${id}`,
+			})
+		}
   }
 })

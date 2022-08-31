@@ -10,7 +10,7 @@ class MZRequest {
 			wx.request({
 				url: BASE_URL + url,
 				method,
-				timeout: 6000,
+				timeout: 10000,
 				data: params,
 				success(res) {
 					wx.hideLoading();
@@ -22,7 +22,10 @@ class MZRequest {
 					}
 					resolve(res.data);
 				},
-				fail: reject
+				fail(err) {
+					wx.hideLoading();
+					reject(err);
+				}
 			})
 		})
 	}

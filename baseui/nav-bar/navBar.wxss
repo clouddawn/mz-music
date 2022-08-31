@@ -1,0 +1,45 @@
+/* baseui/nav-bar/navBar.wxss */
+.nav {
+	display: flex;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+}
+
+.left,
+.right {
+	width: 120rpx;
+}
+
+.center {
+	flex: 1;
+}
+
+.left .left-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.left .left-arrow .icon {
+	width: 45rpx;
+	display: block;
+}
+
+.left .left-arrow {
+	display: none;
+}
+
+.left .left-slot:empty+.left-arrow {
+	display: flex;
+}
+
+.center-title {
+	display: none;
+}
+
+.center-slot:empty+.center-title {
+	display: block;
+}
+

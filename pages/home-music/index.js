@@ -96,17 +96,17 @@ Page({
 
 	imgLoad(event) {
 		// 拿到图片的原始宽高和显示宽度，计算出显示高度
-		// const screenWidth = wx.getSystemInfoSync().screenWidth;
-		// const imgHeight = (event.detail.height * screenWidth) / event.detail.width;
-		// this.setData({
-		// 	swiperHeight: imgHeight
-		// });
-		// 直接拿图片的显示高度
-		tGetComponentHeight('.swiper-image').then((res) => {
-			this.setData({
-				swiperHeight: res[0].height
-			})
+		const screenWidth = wx.getSystemInfoSync().screenWidth;
+		const imgHeight = (event.detail.height * screenWidth) / event.detail.width;
+		this.setData({
+			swiperHeight: imgHeight
 		});
+		// 直接拿图片的显示高度
+		// tGetComponentHeight('.swiper-image').then((res) => {
+		// 	this.setData({
+		// 		swiperHeight: res[0].height
+		// 	})
+		// });
 	},
 	// 点击搜索框
 	handleSearchClick() {

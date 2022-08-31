@@ -1,11 +1,10 @@
 <!--components/song-item-v1/song-item-v1.wxml-->
 <wxs src="/utils/format.wxs" module="format"></wxs>
-<view class="item">
+<view class="item" bindtap="goMusicPlayer" data-id="{{songItem.id}}">
 	<image class="image" src="{{songItem.al.picUrl}}"></image>
 	<view class="content">
 		<view class="name">{{songItem.name}}</view>
 		<view class="source">{{format.formatAuthors(songItem.ar)}} - {{songItem.al.name}}</view>
 	</view>
 	<image class="icon" src="/assets/images/icons/arrow-right.png"></image>
-
 </view>

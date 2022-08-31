@@ -51,6 +51,7 @@ Page({
 			return
 		}
 		debounceGetSearchSuggest(event.detail).then((res) => {
+			console.log(event.detail);
 			const suggestsSongs = res.result.allMatch;
 			suggestsSongs.forEach((item) => {
 				const searchValue = this.data.searchValue;

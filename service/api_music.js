@@ -35,3 +35,18 @@ export function getSongMenuDetail(id){
 		id
 	})
 }
+
+// 请求歌曲详情
+export function getSongDetail(id){
+	return mzRequest.get("/song/detail",{
+		ids:id
+	})
+}
+
+// 请求歌词
+export function getSongLyric(id){
+	return mzRequest.get("/lyric",{
+		id
+	})
+}
+

@@ -36,6 +36,13 @@
 					"query": "",
 					"launchMode": "default",
 					"scene": null
+				},
+				{
+					"name": "zai-ni-de-shen-bian",
+					"pathName": "pages/music-player/music-player",
+					"query": "id=475479888",
+					"launchMode": "default",
+					"scene": null
 				}
 			]
 		}

@@ -1,4 +1,3 @@
-export {
-	rankingStore
-}
-from "./ranking-store"
+export * from "./ranking-store"
+
+export * from "./play-store"

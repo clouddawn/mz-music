@@ -21,6 +21,13 @@ function formatDuration(duration) {
 	return minute + ':' + padLeftZero(second);
 }
 
+function formatS2M(duration) {
+	duration = +duration;
+	var minute = Math.floor(duration / 60);
+	var second = Math.floor(duration) % 60;
+	return padLeftZero(minute) + ':' + padLeftZero(second);
+}
+
 function formatAuthors(authors) {
 	var authorsArr = [];
 	authors && authors.forEach(function (item) {
@@ -41,5 +48,6 @@ module.exports = {
 	formatCount: formatCount,
 	formatDuration: formatDuration,
 	formatAuthors: formatAuthors,
-	formatAlName: formatAlName
+	formatAlName: formatAlName,
+	formatS2M:formatS2M
 }

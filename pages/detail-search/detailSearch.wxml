@@ -2,25 +2,8 @@
 <van-search value="{{searchValue}}" placeholder="搜索您喜欢的歌曲" background="transparent" shape="round" bind:change="handleSearchChange" bind:search="handleSearchAction" show-action="{{searchValue}}" />
 <!-- 热门搜索 -->
 <search-items title="热门搜索" items="{{hots}}" bind:itemClick="getPageSearchResult"  wx:if="{{!searchValue || suggestSongs.length === 0 && resultSongs.length === 0}}"></search-items>
-<!-- 热门搜索 -->
-<!-- <view class="hot" wx:if="{{!searchValue || suggestSongs.length === 0 && resultSongs.length === 0}}">
-	<area-header title="热门搜索" showRight="{{false}}" fontWeight="400"></area-header>
-	<view class="keywords">
-		<block wx:for="{{hots}}" wx:key="first">
-			<view class="tag" bindtap="getPageSearchResult" data-keyword="{{item.first}}">{{item.first}}</view>
-		</block>
-	</view>
-</view> -->
 <!-- 历史搜索 -->
 <search-items title="历史搜索" items="{{historySearch}}" bind:itemClick="getPageSearchResult" wx:if="{{!searchValue || suggestSongs.length === 0 && resultSongs.length === 0 && historySearch.length > 0}}" style="color: black"></search-items>
-<view class="hot" wx:if="{{!searchValue || suggestSongs.length === 0 && resultSongs.length === 0 && historySearch.length > 0}}">
-	<area-header title="历史搜索" showRight="{{false}}" fontWeight="400"></area-header>
-	<view class="keywords">
-		<block wx:for="{{historySearch}}" wx:key="first">
-			<view class="tag" bindtap="getPageSearchResult" data-keyword="{{item}}" style="color: black">{{item}}</view>
-		</block>
-	</view>
-</view>
 <!-- 建议搜索 -->
 <view class="suggest" wx:elif="{{suggestSongs.length > 0 && resultSongs.length === 0}}">
 	<view class="title">搜索“{{searchValue}}”</view>

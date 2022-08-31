@@ -1,6 +1,6 @@
 <!--components/song-item-v2/songItemV2.wxml-->
 <wxs src="/utils/format.wxs" module="format"></wxs>
-<view class="item">
+<view class="item" bindtap="goMusicPlayer" data-id="{{item.id}}">
 	<view class="index">{{index + 1}}</view>
 	<view class="info">
 		<view class="name limitTwoLine">{{itemInfo.name}}</view>

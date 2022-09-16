@@ -21,7 +21,8 @@ Page({
 		lineLyricsArr: [],
 
 		currentLyricIndex: 0,
-		lyricScrollTop: 0
+		lyricScrollTop: 0,
+		playModeIcon:'order',
 	},
 	onLoad(options) {
 		const id = options.id;
@@ -39,6 +40,9 @@ Page({
 		// 计算内容高度
 		this.getContentHeight();
 
+		playerStore.onState('playModeIcon',(playModeIcon)=>{
+			this.setData({playModeIcon})
+		})
 
 		// this.setupAudioContextListener();
 	},
@@ -83,6 +87,9 @@ Page({
 		this.setData({
 			currentPage: event.detail.current,
 		})
+	},
+	handleModeBtnClick(){
+		playerStore.dispatch('changeMode');
 	},
 	getContentHeight() {
 		const globaldata = getApp().globalData;

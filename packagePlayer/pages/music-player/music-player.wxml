@@ -33,7 +33,7 @@
         </view>
       </view>
       <view class="operation">
-        <image class="btn btn-mode" src="/assets/images/player/play_{{playModeIcon}}.png" bindtap="handelModeBtnClick"></image>
+        <image class="btn btn-mode" src="/assets/images/player/play_{{playModeIcon}}.png" bindtap="handleModeBtnClick"></image>
         <image class="btn btn-prev" src="/assets/images/player/play_prev.png" bindtap="playPrevBtnClick"></image>
         <image class="btn btn-pause" src="/assets/images/player/play_{{isPlaying ? 'pause' : 'resume'}}.png" bindtap="handlePlayBtnClick"></image>
         <image class="btn btn-next" src="/assets/images/player/play_next.png" bindtap="playNextBtnClick"></image>

@@ -1,15 +1,31 @@
-const BASE_URL = 'https://coderwhy-music.vercel.app';
+// const BASE_URL = 'https://coderwhy-music.vercel.app';
+const BASE_URL = 'http://codercba.com:9002';
+const LOGIN_BASE_URL = "http://123.207.32.32:3000"
+import {
+	TOKEN_KEY
+} from "../constants/token-const"
+
+const token = wx.getStorageSync(TOKEN_KEY);
 
 class MZRequest {
-	request(url, method, params) {
+	constructor(baseUrl, authHeader = {}) {
+		this.baseUrl = baseUrl;
+		this.authHeader = authHeader;
+	}
+	request(url, method, params, isAuth = false, header = {}) {
 		wx.showLoading({
 			title: '加载中',
 			mask: true
 		});
 		return new Promise((resolve, reject) => {
+			const finerHeader = isAuth ? {
+				...this.authHeader,
+				...header
+			} : {};
 			wx.request({
-				url: BASE_URL + url,
+				url: this.baseUrl + url,
 				method,
+				header: finerHeader,
 				timeout: 10000,
 				data: params,
 				success(res) {
@@ -29,12 +45,15 @@ class MZRequest {
 			})
 		})
 	}
-	get(url, params) {
-		return this.request(url, 'GET', params);
+	get(url, params, isAuth = false, header) {
+		return this.request(url, 'GET', params,isAuth, header);
 	}
-	post(url, params) {
-		return this.request(url, 'POST', params);
+	post(url, params, isAuth = false, header) {
+		return this.request(url, 'POST', params, isAuth, header);
 	}
 }
 
-export const mzRequest = new MZRequest();
+export const mzRequest = new MZRequest(BASE_URL);
+export const mzLoginRequest = new MZRequest(LOGIN_BASE_URL, {
+	token
+});

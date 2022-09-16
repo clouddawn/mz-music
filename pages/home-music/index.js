@@ -12,10 +12,14 @@ import {
 	throttle
 } from "../../utils/throttle"
 import {
-	rankingStore
+	rankingStore,
+	playerStore
 } from "../../store/index"
 
-const tGetComponentHeight = throttle(getComponentHeight)
+const tGetComponentHeight = throttle(getComponentHeight, 500, {
+	leading: true,
+	trailing: true
+})
 
 Page({
 	/**
@@ -27,7 +31,8 @@ Page({
 		recommendSongs: [],
 		hotSongMenu: [],
 		recommendSongMenu: [],
-		rankings: []
+		rankings: [],
+		currentSong: {}
 	},
 	/**
 	 * 生命周期函数--监听页面加载
@@ -43,6 +48,12 @@ Page({
 		rankingStore.onState('upRanking', this.getNewRankingHandler);
 		rankingStore.onState('newRanking', this.getNewRankingHandler);
 		rankingStore.onState('originRanking', this.getNewRankingHandler);
+		
+		playerStore.onStates(["currentSong"],({currentSong})=>{
+			if(Object.keys(currentSong).length !== 0){
+				this.setData({currentSong});
+			}
+		})
 	},
 
 	getNewRankingHandler(res) {
@@ -95,24 +106,17 @@ Page({
 	},
 
 	imgLoad(event) {
-		// 拿到图片的原始宽高和显示宽度，计算出显示高度
-		const screenWidth = wx.getSystemInfoSync().screenWidth;
-		const imgHeight = (event.detail.height * screenWidth) / event.detail.width;
-		this.setData({
-			swiperHeight: imgHeight
+		// 拿图片的显示高度
+		tGetComponentHeight('.swiper-image').then((res) => {
+			this.setData({
+				swiperHeight: res[0].height
+			})
 		});
-		// 直接拿图片的显示高度
-		// tGetComponentHeight('.swiper-image').then((res) => {
-		// 	this.setData({
-		// 		swiperHeight: res[0].height
-		// 	})
-		// });
 	},
 	// 点击搜索框
 	handleSearchClick() {
-		console.log('search');
 		wx.navigateTo({
-			url: '/pages/detail-search/detailSearch',
+			url: '/packageDetail/pages/detail-search/detailSearch',
 		})
 	},
 	// 推荐歌曲点击更多
@@ -120,41 +124,26 @@ Page({
 		this.navigateToDetailSongs('hotRanking')
 	},
 	//巅峰榜榜单点击
-	handleRankingClick(event){
+	handleRankingClick(event) {
 		const rankingChineseName = event.currentTarget.dataset.item.name;
 		const rankingMap = {
-			'新歌榜':'newRanking',
-			'原创榜':'originRanking',
-			'飙升榜':'upRanking'
+			'新歌榜': 'newRanking',
+			'原创榜': 'originRanking',
+			'飙升榜': 'upRanking'
 		}
 		const rankingName = rankingMap[rankingChineseName];
 		this.navigateToDetailSongs(rankingName);
 	},
-	navigateToDetailSongs(rankingName){
+	navigateToDetailSongs(rankingName) {
 		wx.navigateTo({
-			url: `/pages/detail-songs/detailSongs?ranking=${rankingName}&type=rank`,
+			url: `/packageDetail/pages/detail-songs/detailSongs?ranking=${rankingName}&type=rank`,
 		})
 	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady() {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow() {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide() {
-
+	// 点击推荐歌曲
+	handleSongItemClick(event) {
+		const index = event.currentTarget.dataset.index;
+		playerStore.setState('playListIndex', index);
+		playerStore.setState('playListSongs', this.data.recommendSongs);
 	},
 
 	/**
@@ -163,25 +152,4 @@ Page({
 	onUnload() {
 
 	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh() {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom() {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage() {
-
-	}
 })

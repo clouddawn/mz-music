@@ -2,7 +2,7 @@
 import {
 	innerAudioContext,
 	playerStore
-} from "../../store/index"
+} from "../../../store/index"
 
 Page({
 	data: {

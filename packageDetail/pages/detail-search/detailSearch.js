@@ -3,10 +3,10 @@ import {
 	getSearchKeywords,
 	getSearchSuggest,
 	getSearchResult
-} from "../../service/api_search";
+} from "../../../service/api_search";
 import {
 	debounce
-} from "../../utils/debounce";
+} from "../../../utils/debounce";
 
 const debounceGetSearchSuggest = debounce(getSearchSuggest, 300);
 

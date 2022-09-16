@@ -14,7 +14,7 @@
   <area-header title="推荐歌曲" bindclick="handleMoreClick"></area-header>
   <view class="song-list">
     <block wx:for="{{recommendSongs}}" wx:key="id">
-      <song-item-v1 song-item="{{item}}"></song-item-v1>
+      <song-item-v1 song-item="{{item}}" bindtap="handleSongItemClick" data-index="{{index}}"></song-item-v1>
     </block>
   </view>
 </view>
@@ -30,3 +30,6 @@
 		</block>
 	</view>
 </view>
+<!-- 播放工具栏 -->
+<view style="height: {{currentSong.id ? 59 : 10}}px;"></view>
+<player-bar wx:if="{{currentSong.id}}" currentSong="{{currentSong}}"></player-bar>

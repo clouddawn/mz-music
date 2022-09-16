@@ -1,7 +1,0 @@
-{
-	"usingComponents": {
-		"area-header": "../../components/area-header/areaHeader",
-		"song-item-v2": "../../components/song-item-v2/songItemV2",
-		"song-detail-header": "./cpns/song-detali-header/song-detail-header"
-	}
-}

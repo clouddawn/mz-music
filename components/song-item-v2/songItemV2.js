@@ -1,4 +1,5 @@
 // components/song-item-v2/songItemV2.js
+import {playerStore} from "../../store/index"
 Component({
 	options: {
     addGlobalClass: true
@@ -31,6 +32,7 @@ Component({
 		goMusicPlayer(event){
 			// const id = event.currentTarget.dataset.id;
 			const id = this.properties.itemInfo.id;
+			playerStore.dispatch("playMusicWithSongIdAction",{id})
 			wx.navigateTo({
 				url: `/pages/music-player/music-player?id=${id}`,
 			})

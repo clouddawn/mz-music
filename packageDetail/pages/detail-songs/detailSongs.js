@@ -1,10 +1,10 @@
 // pages/detail-songs/detailSongs.js
 import {
-	rankingStore
-} from "../../store/index";
+	rankingStore,playerStore
+} from "../../../store/index";
 import {
 	getSongMenuDetail
-} from "../../service/api_music"
+} from "../../../service/api_music"
 
 Page({
 
@@ -38,12 +38,15 @@ Page({
 				})
 			})
 		}
-
 	},
 	getRankingData(res) {
 		this.setData({
 			songInfo: res
 		})
+	},
+	handleSongItemClick(event){
+		playerStore.setState('playListSongs',this.data.songInfo.tracks);
+		playerStore.setState('playListIndex',event.currentTarget.dataset.index);
 	},
 
 	/**

@@ -4,7 +4,7 @@ import {
 	getMVDetail,
 	getMVURL,
 	getRelatedVideo
-} from "../../service/api_video"
+} from "../../../service/api_video"
 
 Page({
 

@@ -11,3 +11,6 @@
 		<song-item-v2 itemInfo="{{item}}" index="{{index}}" bindtap="handleSongItemClick" data-index="{{index}}"></song-item-v2>
 	</block>
 </view>
+
+<!-- 播放工具栏 -->
+<player-bar></player-bar>

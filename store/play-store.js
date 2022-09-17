@@ -184,8 +184,8 @@ const playerStore = new HYEventStore({
 
 				// 单曲循环
 			} else if (ctx.playModeIndex === 1) {
-				innerAudioContext.stop();
-
+				innerAudioContext.seek(0);
+				
 				// 随机播放
 			} else if (ctx.playModeIndex === 2) {
 				const getRandomNumber = ()=>{

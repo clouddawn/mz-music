@@ -1,5 +1,6 @@
 <!--pages/home-music/cpns/player-bar/player-bar.wxml-->
-<view class="player-bar" bindtap="handlePlayerBarClick">
+<view style="height: {{currentSong.id ? 59 : 10}}px;"></view>
+<view class="player-bar" bindtap="handlePlayerBarClick" wx:if="{{currentSong.id}}">
 	<view class="left">
 		<image 
 		class="album album-anim" 

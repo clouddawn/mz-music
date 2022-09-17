@@ -23,6 +23,7 @@ Page({
 		currentLyricIndex: 0,
 		lyricScrollTop: 0,
 		playModeIcon:'order',
+		isPlaying:'false'
 	},
 	onLoad(options) {
 		const id = options.id;
@@ -43,7 +44,9 @@ Page({
 		playerStore.onState('playModeIcon',(playModeIcon)=>{
 			this.setData({playModeIcon})
 		})
-
+		playerStore.onState('isPlaying',(isPlaying)=>{
+			this.setData({isPlaying})
+		})
 		// this.setupAudioContextListener();
 	},
 	// 歌曲播放监听
@@ -110,11 +113,11 @@ Page({
 		})
 	},
 	handleSliderChange(event) {
-		innerAudioContext.pause();
-		const value = event.detail.value;
-		const currentTime = value / 100 * this.data.songDuration;
-		innerAudioContext.seek(currentTime);
-
+		// innerAudioContext.pause();
+		// const value = event.detail.value;
+		// const currentTime = value / 100 * this.data.songDuration;
+		// innerAudioContext.seek(currentTime);
+		playerStore.dispatch('handleSliderChangeAction',event);
 		this.setData({
 			isSliderChaning: false
 		})
@@ -122,6 +125,18 @@ Page({
 	// 点击返回
 	handleLeftClick() {
 		wx.navigateBack();
+	},
+	// 点击播放上一首
+	playPrevBtnClick(){
+		playerStore.dispatch('switchSongAction','prev')
+	},
+	// 点击播放/暂停
+	handlePlayBtnClick(){
+		playerStore.dispatch('changePlayStatus',!this.data.isPlaying)
+	},
+	// 点击播放下一首
+	playNextBtnClick(){
+		playerStore.dispatch('switchSongAction','next')
 	},
 	setupPlayerStoreListener() {
 		playerStore.onStates(['currentSong', 'lineLyricsArr'], ({

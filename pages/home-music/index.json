@@ -5,6 +5,6 @@
 		"song-item-v1":"../../components/song-item-v1/song-item-v1",
 		"song-menu-area":"../../components/song-menu-area/songMenuArea",
 		"ranking-area-item":"../../components/ranking-area-item/rankingAreaItem",
-		"player-bar":"./cpns/player-bar/player-bar"
+		"player-bar":"../../components/player-bar/player-bar"
 	}
 }

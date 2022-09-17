@@ -31,5 +31,4 @@
 	</view>
 </view>
 <!-- 播放工具栏 -->
-<view style="height: {{currentSong.id ? 59 : 10}}px;"></view>
-<player-bar wx:if="{{currentSong.id}}" currentSong="{{currentSong}}"></player-bar>
+<player-bar></player-bar>

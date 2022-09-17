@@ -1,24 +1,32 @@
 // pages/home-music/cpns/player-bar/player-bar.js
 import {
 	playerStore
-} from "../../../../store/index"
+} from "../../store/index"
 Component({
 	/**
 	 * 组件的属性列表
 	 */
-	properties: {
-		currentSong: {
-			type: Object,
-			value: {}
-		}
+	data:{
+		isPlaying:false,
+		currentSong:{}
 	},
 	lifetimes: {
 		attached: function () {
 			// 在组件实例进入页面节点树时执行
-			playerStore.onState('isPlaying', (isPlaying) => {
-				this.setData({
-					isPlaying
-				})
+			playerStore.onStates(['isPlaying', "currentSong"], ({
+				isPlaying,
+				currentSong
+			}) => {
+				if (isPlaying !== undefined) {
+					this.setData({
+						isPlaying
+					})
+				}
+				if (currentSong && Object.keys(currentSong).length !== 0) {
+					this.setData({
+						currentSong
+					});
+				}
 			})
 		},
 		detached: function () {
@@ -40,7 +48,7 @@ Component({
 		handlePlayBtnClick() {
 			playerStore.dispatch('changePlayStatus', !this.data.isPlaying);
 		},
-		handlePlayerBarClick(){
+		handlePlayerBarClick() {
 			const id = this.properties.currentSong.id;
 			wx.navigateTo({
 				url: `/packagePlayer/pages/music-player/music-player?id=${id}`,

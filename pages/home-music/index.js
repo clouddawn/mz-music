@@ -32,7 +32,7 @@ Page({
 		hotSongMenu: [],
 		recommendSongMenu: [],
 		rankings: [],
-		currentSong: {}
+		// currentSong: {}
 	},
 	/**
 	 * 生命周期函数--监听页面加载
@@ -49,11 +49,11 @@ Page({
 		rankingStore.onState('newRanking', this.getNewRankingHandler);
 		rankingStore.onState('originRanking', this.getNewRankingHandler);
 		
-		playerStore.onStates(["currentSong"],({currentSong})=>{
-			if(Object.keys(currentSong).length !== 0){
-				this.setData({currentSong});
-			}
-		})
+		// playerStore.onStates(["currentSong"],({currentSong})=>{
+		// 	if(Object.keys(currentSong).length !== 0){
+		// 		this.setData({currentSong});
+		// 	}
+		// })
 	},
 
 	getNewRankingHandler(res) {

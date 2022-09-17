@@ -23,7 +23,6 @@ export const rankingStore = new HYEventStore({
 			}
 			Object.keys(rankingMap).forEach((item)=>{
 				getRankings(item).then((res) => {
-					// console.log(res);
 					ctx[rankingMap[item]] = res.playlist;
 				})
 			})
